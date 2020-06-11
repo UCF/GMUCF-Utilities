@@ -81,7 +81,7 @@ function generate_email_markup( $post_id ) {
 		'post_type' => 'ucf-email'
 	);
 
-	$query = new WP_Query( $args );
+	$query = new \WP_Query( $args );
 
 	$wp_query = $query;
 

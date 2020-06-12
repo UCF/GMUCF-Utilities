@@ -67,7 +67,8 @@ function insert_instant_send_js() {
 			jQuery.post(
 				ajaxurl,
 				data,
-				onPostSuccess
+				onPostSuccess,
+				'json'
 			);
 		});
 	</script>

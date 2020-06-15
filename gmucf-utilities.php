@@ -11,7 +11,7 @@ namespace GMUCF\Utils;
 
 
 if ( ! defined( 'WPINC' ) ) {
-    die;
+	die;
 }
 
 define( 'GMUCF_UTILS__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

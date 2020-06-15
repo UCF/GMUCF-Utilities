@@ -1,60 +1,53 @@
-=== GMUCF Utilities ===
-Contributors: ucfwebcom
-Requires at least: 5.3
-Tested up to: 5.4
-Stable tag: 1.0.0
-Requires PHP: 7.3
-License: GPLv3 or later
-License URI: http://www.gnu.org/copyleft/gpl-3.0.html
+# GMUCF Utilities #
 
 Feature and utility plugin for the GMUCF WordPress site.
 
 
-== Description ==
+## Description ##
 
 Includes features and functionality for the GMUCF WordPress site that are otherwise not suitable for inclusion in the [GMUCF Theme](https://github.com/UCF/UCF-GMUCF-Theme).
 
 
-== Installation Requirements ==
+## Installation Requirements ##
 
 This plugin is developed and tested against WordPress 5.3+ and PHP 7.3+.
 
-= Theme =
+### Theme ###
 This plugin is intended for use only with the [GMUCF Theme](https://github.com/UCF/UCF-GMUCF-Theme).
 
-= Required plugins =
+### Required plugins ###
 These plugins _must_ be activated for GMUCF-Utilities to function properly.
 
 * [Advanced Custom Fields PRO](https://advancedcustomfields.com/)
 * [UCF Email Editor Plugin](https://github.com/UCF/UCF-Email-Editor-Plugin)
 
-= Recommended Plugins =
+### Recommended Plugins ###
 These plugins are not technically required for this plugin to function normally, but are generally expected to be installed for full functionality of the GMUCF site:
 * [WP Mail SMTP](https://wordpress.org/plugins/wp-mail-smtp/) (for Email CPT instant sends)
 
 
-== Changelog ==
+## Changelog ##
 
-= 1.0.0 =
+### 1.0.0 ###
 * Initial release
 
 
-== Upgrade Notice ==
+## Upgrade Notice ##
 
 n/a
 
 
-== Development ==
+## Development ##
 
 Note that compiled, minified css and js files are included within the repo.  Changes to these files should be tracked via git (so that users installing the plugin using traditional installation methods will have a working plugin out-of-the-box.)
 
 [Enabling debug mode](https://codex.wordpress.org/Debugging_in_WordPress) in your `wp-config.php` file is recommended during development to help catch warnings and bugs.
 
-= Requirements =
+### Requirements ###
 * node
 * gulp-cli
 
-= Instructions =
+### Instructions ###
 1. Clone the GMUCF-Utilities repo into your local development environment, within your WordPress installation's `plugins/` directory: `git clone https://github.com/UCF/GMUCF-Utilities.git`
 2. `cd` into the new GMUCF-Utilities directory, and run `npm install` to install required packages for development into `node_modules/` within the repo
 3. Optional: If you'd like to enable [BrowserSync](https://browsersync.io) for local development, or make other changes to this project's default gulp configuration, copy `gulp-config.template.json`, make any desired changes, and save as `gulp-config.json`.
@@ -67,5 +60,5 @@ Note that compiled, minified css and js files are included within the repo.  Cha
 5. Activate this plugin on your development WordPress site.
 6. Run `gulp watch` to continuously watch changes to scss and js files.  If you enabled BrowserSync in `gulp-config.json`, it will also reload your browser when plugin files change.
 
-= Other Notes =
+### Other Notes ###
 * This plugin's README.md file is automatically generated. Please only make modifications to the README.txt file, and make sure the `gulp readme` command has been run before committing README changes.

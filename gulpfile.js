@@ -185,4 +185,4 @@ gulp.task('watch', (done) => {
 //
 // Default task
 //
-gulp.task('default', gulp.series('css', 'js', 'readme'));
+gulp.task('default', gulp.series('readme'));

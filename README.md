@@ -28,6 +28,11 @@ These plugins are not technically required for this plugin to function normally,
 
 ## Changelog ##
 
+### 1.0.1 ###
+Bug Fixes:
+- Updated `instant_send()` to ensure that an email's requester gets included in the recipient list used for sending previews.
+- Instant send recipient lists are now filtered to ensure email addresses aren't repeated, and that no empty strings get passed along as recipient addresses.
+
 ### 1.0.0 ###
 * Initial release
 

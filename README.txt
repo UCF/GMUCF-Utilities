@@ -2,7 +2,7 @@
 Contributors: ucfwebcom
 Requires at least: 5.3
 Tested up to: 5.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
@@ -34,6 +34,11 @@ These plugins are not technically required for this plugin to function normally,
 
 
 == Changelog ==
+
+= 1.0.1 =
+Bug Fixes:
+- Updated `instant_send()` to ensure that an email's requester gets included in the recipient list used for sending previews.
+- Instant send recipient lists are now filtered to ensure email addresses aren't repeated, and that no empty strings get passed along as recipient addresses.
 
 = 1.0.0 =
 * Initial release

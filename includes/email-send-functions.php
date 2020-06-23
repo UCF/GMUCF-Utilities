@@ -112,8 +112,13 @@ function instant_send( $post_id ) {
 	);
 
 	// Get recipients
-	$recipients_raw = get_field( 'preview_recipients', $post_id );
-	$recipients     = array_map( 'trim', explode( ',', $recipients_raw ) );
+	$requester      = trim( get_field( 'requester', $post_id ) );
+	$recipients_raw = trim( get_field( 'preview_recipients', $post_id ) );
+	$recipients     = array_filter( array_map( 'trim', explode( ',', $recipients_raw ) ?: array() ) );
+	if ( $requester ) {
+		$recipients[] = $requester;
+	}
+	$recipients = array_unique( $recipients );
 
 	if ( is_array( $recipients ) && count( $recipients ) > 0 ) {
 		$args['to'] = $recipients;

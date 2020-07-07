@@ -11,6 +11,7 @@ namespace GMUCF\Utils\Admin\Email;
  *
  * @since 1.0.0
  * @author Jim Barnes
+ * @param object $post WP_Post object
  * @return void
  */
 function instant_send_button( $post ) {

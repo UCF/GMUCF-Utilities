@@ -127,15 +127,20 @@ function instant_send( $post_id ) {
 	);
 
 	// Get recipients
-	$requester      = trim( get_field( 'requester', $post_id ) );
-	$recipients_raw = trim( get_field( 'preview_recipients', $post_id ) );
-	$recipients     = array_filter( array_map( 'sanitize_recipient_email', explode( ',', $recipients_raw ) ?: array() ) );
-	if ( $requester ) {
-		$recipients[] = sanitize_recipient_email( $requester );
-	}
-	$recipients = array_unique( $recipients );
+	$recipients             = array();
+	$base_recipients_raw    = get_option( 'email_preview_base_list' );
+	$base_recipients        = explode( ',', $base_recipients_raw ) ?: array();
+	$requester              = get_field( 'requester', $post_id );
+	$preview_recipients_raw = get_field( 'preview_recipients', $post_id );
+	$preview_recipients     = explode( ',', $preview_recipients_raw ) ?: array();
 
-	if ( is_array( $recipients ) && count( $recipients ) > 0 ) {
+	$recipients = array_merge( $base_recipients, $preview_recipients );
+	if ( $requester ) {
+		$recipients[] = $requester;
+	}
+	$recipients = array_unique( array_filter( array_map( __NAMESPACE__ . '\sanitize_recipient_email', $recipients ) ) );
+
+	if ( count( $recipients ) > 0 ) {
 		$args['to'] = $recipients;
 	}
 

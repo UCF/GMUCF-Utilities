@@ -112,15 +112,20 @@ function instant_send( $post_id ) {
 	);
 
 	// Get recipients
-	$requester      = trim( get_field( 'requester', $post_id ) );
-	$recipients_raw = trim( get_field( 'preview_recipients', $post_id ) );
-	$recipients     = array_filter( array_map( 'trim', explode( ',', $recipients_raw ) ?: array() ) );
+	$recipients             = array();
+	$base_recipients_raw    = trim( get_option( 'email_preview_base_list' ) );
+	$base_recipients        = array_filter( array_map( 'trim', explode( ',', $base_recipients_raw ) ?: array() ) );
+	$requester              = trim( get_field( 'requester', $post_id ) );
+	$preview_recipients_raw = trim( get_field( 'preview_recipients', $post_id ) );
+	$preview_recipients     = array_filter( array_map( 'trim', explode( ',', $preview_recipients_raw ) ?: array() ) );
+
+	$recipients = array_merge( $base_recipients, $preview_recipients );
 	if ( $requester ) {
 		$recipients[] = $requester;
 	}
 	$recipients = array_unique( $recipients );
 
-	if ( is_array( $recipients ) && count( $recipients ) > 0 ) {
+	if ( count( $recipients ) > 0 ) {
 		$args['to'] = $recipients;
 	}
 

@@ -11,14 +11,17 @@ namespace GMUCF\Utils\Admin\Email;
  *
  * @since 1.0.0
  * @author Jim Barnes
+ * @param object $post WP_Post object
  * @return void
  */
 function instant_send_button( $post ) {
+	if ( $post->post_type === 'ucf-email' ) :
 ?>
 <div class="misc-pub-section instant-send">
 	<a style="margin-bottom: 12px;" class="preview button" href="#send-preview" id="instant-send">Send Preview</a>
 </div>
 <?php
+	endif;
 }
 
 add_action( 'post_submitbox_misc_actions', __NAMESPACE__ . '\instant_send_button', 10, 1 );

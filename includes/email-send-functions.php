@@ -97,6 +97,21 @@ function generate_email_markup( $post_id ) {
 
 
 /**
+ * Sanitizes a preview recipient's email address to ensure
+ * errant spaces are removed around the address, and that
+ * consistent lowercase letters are used.
+ *
+ * @author Jo Dickson
+ * @since 1.0.2
+ * @param string $recipient_email A preview recipient's email address
+ * @return string Sanitized recipient's email address
+ */
+function sanitize_recipient_email( $recipient_email ) {
+	return strtolower( trim( $recipient_email ) );
+}
+
+
+/**
  * Sends an email instantly from an Email post
  *
  * @author Jim Barnes
@@ -112,15 +127,20 @@ function instant_send( $post_id ) {
 	);
 
 	// Get recipients
-	$requester      = trim( get_field( 'requester', $post_id ) );
-	$recipients_raw = trim( get_field( 'preview_recipients', $post_id ) );
-	$recipients     = array_filter( array_map( 'trim', explode( ',', $recipients_raw ) ?: array() ) );
+	$recipients             = array();
+	$base_recipients_raw    = get_option( 'email_preview_base_list' );
+	$base_recipients        = explode( ',', $base_recipients_raw ) ?: array();
+	$requester              = get_field( 'requester', $post_id );
+	$preview_recipients_raw = get_field( 'preview_recipients', $post_id );
+	$preview_recipients     = explode( ',', $preview_recipients_raw ) ?: array();
+
+	$recipients = array_merge( $base_recipients, $preview_recipients );
 	if ( $requester ) {
 		$recipients[] = $requester;
 	}
-	$recipients = array_unique( $recipients );
+	$recipients = array_unique( array_filter( array_map( __NAMESPACE__ . '\sanitize_recipient_email', $recipients ) ) );
 
-	if ( is_array( $recipients ) && count( $recipients ) > 0 ) {
+	if ( count( $recipients ) > 0 ) {
 		$args['to'] = $recipients;
 	}
 

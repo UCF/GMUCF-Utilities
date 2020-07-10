@@ -28,6 +28,15 @@ These plugins are not technically required for this plugin to function normally,
 
 ## Changelog ##
 
+### 1.0.2 ###
+Bug Fixes:
+- Made sure the email preview button only shows up for emails.
+- Fixed/cleaned up some instant send related logic.
+
+Enhancements:
+- Updated preview list retrieval logic to ensure lists of preview recipients are matched and reduced using case-insensitive string matching.
+- Implemented a base list of email preview recipients to send all previews to.
+
 ### 1.0.1 ###
 Bug Fixes:
 - Updated `instant_send()` to ensure that an email's requester gets included in the recipient list used for sending previews.

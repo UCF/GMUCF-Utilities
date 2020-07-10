@@ -2,7 +2,7 @@
 Contributors: ucfwebcom
 Requires at least: 5.3
 Tested up to: 5.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
@@ -34,6 +34,15 @@ These plugins are not technically required for this plugin to function normally,
 
 
 == Changelog ==
+
+= 1.0.2 =
+Bug Fixes:
+- Made sure the email preview button only shows up for emails.
+- Fixed/cleaned up some instant send related logic.
+
+Enhancements:
+- Updated preview list retrieval logic to ensure lists of preview recipients are matched and reduced using case-insensitive string matching.
+- Implemented a base list of email preview recipients to send all previews to.
 
 = 1.0.1 =
 Bug Fixes:

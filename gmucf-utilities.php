@@ -2,7 +2,7 @@
 /*
 Plugin Name: GMUCF Utilities
 Description: Feature and utility plugin for the GMUCF WordPress site.
-Version: 1.0.1
+Version: 1.0.2
 Author: UCF Web Communications
 License: GPL3
 GitHub Plugin URI: UCF/GMUCF-Utilities

@@ -28,6 +28,10 @@ These plugins are not technically required for this plugin to function normally,
 
 ## Changelog ##
 
+### 1.0.3 ###
+Enhancements:
+- Modified email "preview" nomenclature throughout the plugin to more clearly define them as "tests"
+
 ### 1.0.2 ###
 Bug Fixes:
 - Made sure the email preview button only shows up for emails.

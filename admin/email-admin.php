@@ -52,8 +52,6 @@ function insert_instant_send_js() {
 		var $spinner = $('<img src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" alt="Processing..." style="margin-left: 6px; display: inline-block; vertical-align: sub;">');
 
 		var onPostSuccess = function(response) {
-			$spinner.remove();
-
 			if ( response.success === true ) {
 				var $markup = $(
 					'<div class="updated notice notice-success is-dismissible">' +
@@ -78,7 +76,9 @@ function insert_instant_send_js() {
 				data,
 				onPostSuccess,
 				'json'
-			);
+			).always(function() {
+				$spinner.remove();
+			});
 		});
 	}(jQuery));
 	</script>

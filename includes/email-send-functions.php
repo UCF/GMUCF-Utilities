@@ -15,11 +15,11 @@ namespace GMUCF\Utils\Includes\EmailSend;
  * @param array $args The argument array
  * @return bool True if the email was sent.
  */
-function send_instant_preview( $args ) {
+function send_test( $args ) {
 	$args = shortcode_atts(
 		array(
 			'to'            => array( 'webcom@ucf.edu' ),
-			'subject'       => '**PREVIEW** Test Email **PREVIEW**',
+			'subject'       => '**TEST** Test Email **TEST**',
 			'from_friendly' => 'Good Morning UCF Admin',
 			'from'          => 'webcom@ucf.edu',
 			'body'          => 'Hello World',
@@ -97,13 +97,13 @@ function generate_email_markup( $post_id ) {
 
 
 /**
- * Sanitizes a preview recipient's email address to ensure
+ * Sanitizes a test recipient's email address to ensure
  * errant spaces are removed around the address, and that
  * consistent lowercase letters are used.
  *
  * @author Jo Dickson
  * @since 1.0.2
- * @param string $recipient_email A preview recipient's email address
+ * @param string $recipient_email A test recipient's email address
  * @return string Sanitized recipient's email address
  */
 function sanitize_recipient_email( $recipient_email ) {
@@ -127,14 +127,14 @@ function instant_send( $post_id ) {
 	);
 
 	// Get recipients
-	$recipients             = array();
-	$base_recipients_raw    = get_option( 'email_preview_base_list' );
-	$base_recipients        = explode( ',', $base_recipients_raw ) ?: array();
-	$requester              = get_field( 'requester', $post_id );
-	$preview_recipients_raw = get_field( 'preview_recipients', $post_id );
-	$preview_recipients     = explode( ',', $preview_recipients_raw ) ?: array();
+	$recipients          = array();
+	$base_recipients_raw = get_option( 'email_preview_base_list' );
+	$base_recipients     = explode( ',', $base_recipients_raw ) ?: array();
+	$requester           = get_field( 'requester', $post_id );
+	$test_recipients_raw = get_field( 'preview_recipients', $post_id );
+	$test_recipients     = explode( ',', $test_recipients_raw ) ?: array();
 
-	$recipients = array_merge( $base_recipients, $preview_recipients );
+	$recipients = array_merge( $base_recipients, $test_recipients );
 	if ( $requester ) {
 		$recipients[] = $requester;
 	}
@@ -150,7 +150,7 @@ function instant_send( $post_id ) {
 	$from_friendly = get_field( 'from_friendly_name' );
 
 	if ( $subject ) {
-		$args['subject'] = "*** PREVIEW *** $subject *** PREVIEW ***";
+		$args['subject'] = "**TEST** $subject **TEST**";
 	}
 
 	if ( $from_email && $from_friendly ) {
@@ -158,7 +158,7 @@ function instant_send( $post_id ) {
 		$args['from_friendly'] = $from_friendly;
 	}
 
-	$send = send_instant_preview( $args );
+	$send = send_test( $args );
 
 	return $send;
 }

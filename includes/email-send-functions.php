@@ -72,27 +72,19 @@ function gmucf_content_type( $content_type ) {
 function generate_email_markup( $post_id ) {
 	if ( ! defined( 'UCF_EMAIL_EDITOR__PLUGIN_DIR' ) ) return '';
 
-	global $wp_query;
-
-	$wp_the_query = $wp_query;
+	$permalink = get_permalink( $post_id );
 
 	$args = array(
-		'p'         => $post_id,
-		'post_type' => 'ucf-email'
+		'timeout' => 15
 	);
 
-	$query = new \WP_Query( $args );
+	$response = wp_remote_get( $permalink, $args );
 
-	$wp_query = $query;
+	if ( wp_remote_retrieve_response_code( $response ) >= 400 ) return null;
 
-	ob_start();
+	$body = wp_remote_retrieve_body( $response );
 
-	include_once UCF_EMAIL_EDITOR__PLUGIN_DIR . 'templates/blank/blank-template.php';
-
-	// Reset wp_query
-	$wp_query = $wp_the_query;
-
-	return ob_get_clean();
+	return $body;
 }
 
 

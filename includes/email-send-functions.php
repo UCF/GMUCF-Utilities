@@ -137,9 +137,9 @@ function instant_send( $post_id ) {
 	}
 
 	// Get subject line and from details
-	$subject       = get_field( 'subject_line' );
-	$from_email    = get_field( 'from_email_address' );
-	$from_friendly = get_field( 'from_friendly_name' );
+	$subject       = get_field( 'subject_line', $post_id );
+	$from_email    = get_field( 'from_email_address', $post_id );
+	$from_friendly = get_field( 'from_friendly_name', $post_id );
 
 	if ( $subject ) {
 		$args['subject'] = "**TEST** $subject **TEST**";

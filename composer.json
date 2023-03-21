@@ -1,0 +1,8 @@
+{
+    "name": "ucf/gmucf-utilities",
+    "description": "Feature and utility plugin for the GMUCF WordPress site.",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

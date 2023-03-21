@@ -28,6 +28,10 @@ These plugins are not technically required for this plugin to function normally,
 
 ## Changelog ##
 
+### 1.0.4 ###
+Enhancements:
+* Added composer file.
+
 ### 1.0.3 ###
 Enhancements:
 - Modified email "preview" nomenclature throughout the plugin to more clearly define them as "tests"
